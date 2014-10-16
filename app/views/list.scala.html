@@ -1,0 +1,13 @@
+@(list: List[(Int, String)])
+
+@main("Table of Honor") {
+	<table border='1' style="width:300px">
+	<tr><td>Handle</td><td>Solved N</td></tr>
+    @for(d <- list) {
+    <tr>
+    	<td>@d._2</td>
+    	<td>@d._1</td>
+    </tr>
+    }
+    </table>
+}
