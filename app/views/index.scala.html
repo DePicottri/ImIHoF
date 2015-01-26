@@ -1,8 +1,11 @@
 @(message: String)
 
+@header("Main")
+
 @main(message) {
-
-  <p><a href="@controllers.routes.Application.list" class="btn">
-    <i class="icon-plus"></i> "Get list!"</a></p>
-
+    <p>
+        <a href="@controllers.routes.Application.list" class="btn">
+            Get CodeForces list
+        </a>
+    </p>
 }

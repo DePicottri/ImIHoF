@@ -12,18 +12,15 @@ import play.api.libs.concurrent.Akka
 import com.codeforces.api.objects._
 import com.codeforces.api.JsonProtocol._
 
-abstract class Data {
-    def raw: String
-    def solvedCount: Int
-}
+import com.IMIHOF.MineData._
 
-class CodeForcesData(val data: StatusResponce) extends Data {
-  override def raw = data.toJson.prettyPrint
-  override def solvedCount = data.result.map(_.problem.name).toSet.size
+class CodeForcesData(val data: StatusResponse) extends Data {
+    override def raw = data.toJson.prettyPrint
+    override def solvedCount = data.result.map(_.problem.name).toSet.size
 }
 
 object CodeForcesData {
-    def apply(rj: StatusResponce) = new CodeForcesData(rj)
+    def apply(rj: StatusResponse) = new CodeForcesData(rj)
 }
 
 trait WebGetter {
@@ -37,7 +34,7 @@ object CodeForcesWebGetter extends WebGetter {
         
         import spray.httpx.SprayJsonSupport._
         
-        val pipeline = sendReceive ~> unmarshal[StatusResponce]
+        val pipeline = sendReceive ~> unmarshal[StatusResponse]
         val response = pipeline(
             Get("http://codeforces.com/api/user.status?handle=" + param + "&from=1&count=10000")
             )

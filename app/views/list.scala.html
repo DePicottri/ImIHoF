@@ -1,13 +1,22 @@
 @(list: List[(Int, String)])
 
+@header("CodeForeces table of honor")
+
 @main("Table of Honor") {
-	<table border='1' style="width:300px">
-	<tr><td>Handle</td><td>Solved N</td></tr>
-    @for(d <- list) {
-    <tr>
-    	<td>@d._2</td>
-    	<td>@d._1</td>
-    </tr>
-    }
-    </table>
+    <div class="container fluid">
+        <div class="raw">
+            <div class="col-md-4 col-md-offset-4">
+                <table class="table table-bordered table-hover">
+            	<tr><th>Handle</th><th>Solved N</th></tr>
+                @for(d <- list) {
+                <tr>
+                	<td>@d._2</td>
+                	<td>@d._1</td>
+                </tr>
+                }
+                </table>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
 }

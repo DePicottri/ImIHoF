@@ -35,7 +35,7 @@ case class Submission(
   timeConsumedMillis: Int,
   memoryConsumedBytes: Int)
 
-case class StatusResponce(
+case class StatusResponse(
   status: String,
   result: List[Submission])
 
